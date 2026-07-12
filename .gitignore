@@ -1,0 +1,4 @@
+.stfolder/
+*.sync-conflict*
+.DS_Store
+Thumbs.db

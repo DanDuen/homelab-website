@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homelab Commands</title>
+</head>
+
+<body>
+
+<h1>Homelab Command Reference</h1>
+
+<h2>SSH Access</h2>
+
+<p>Connect to Raspberry Pis and servers remotely.</p>
+
+<ul>
+    <li>
+        <code>ssh daniel@IP_ADDRESS</code><br>
+        Connect to a device using SSH
+    </li>
+
+    <li>
+        <code>hostname -I</code><br>
+        Display the current device IP address
+    </li>
+
+    <li>
+        <code>hostname</code><br>
+        Display the device hostname
+    </li>
+</ul>
+
+
+<h2>Linux System Updates</h2>
+
+<ul>
+
+    <li>
+        <code>sudo apt update</code><br>
+        Refresh available package lists
+    </li>
+
+    <li>
+        <code>sudo apt upgrade -y</code><br>
+        Install available updates
+    </li>
+
+    <li>
+        <code>sudo reboot</code><br>
+        Restart the device
+    </li>
+
+</ul>
+
+
+<h2>Docker Commands</h2>
+
+<ul>
+
+    <li>
+        <code>docker ps</code><br>
+        Show running containers
+    </li>
+
+    <li>
+        <code>docker ps -a</code><br>
+        Show all containers
+    </li>
+
+    <li>
+        <code>docker logs CONTAINER_NAME</code><br>
+        View container logs
+    </li>
+
+    <li>
+        <code>docker restart CONTAINER_NAME</code><br>
+        Restart a container
+    </li>
+
+    <li>
+        <code>docker compose up -d</code><br>
+        Start services defined in a Docker Compose file
+    </li>
+
+    <li>
+        <code>docker compose down</code><br>
+        Stop services defined in a Docker Compose file
+    </li>
+
+</ul>
+
+
+<h2>NGINX Commands</h2>
+
+<ul>
+
+    <li>
+        <code>sudo nginx -t</code><br>
+        Test NGINX configuration
+    </li>
+
+    <li>
+        <code>sudo systemctl restart nginx</code><br>
+        Restart NGINX
+    </li>
+
+    <li>
+        <code>sudo systemctl status nginx</code><br>
+        Check NGINX status
+    </li>
+
+    <li>
+        <code>sudo nginx -T</code><br>
+        Display the complete NGINX configuration
+    </li>
+
+</ul>
+
+
+<h2>Pi-hole Commands</h2>
+
+<ul>
+
+    <li>
+        <code>pihole status</code><br>
+        Check Pi-hole status
+    </li>
+
+    <li>
+        <code>pihole -up</code><br>
+        Update Pi-hole
+    </li>
+
+    <li>
+        <code>pihole -r</code><br>
+        Repair Pi-hole installation
+    </li>
+
+    <li>
+        <code>pihole reloaddns</code><br>
+        Reload DNS settings and flush cache
+    </li>
+
+</ul>
+
+
+<h2>File Management</h2>
+
+<ul>
+
+    <li>
+        <code>ls -la</code><br>
+        List files including hidden files
+    </li>
+
+    <li>
+        <code>cd DIRECTORY</code><br>
+        Change directory
+    </li>
+
+    <li>
+        <code>nano FILE</code><br>
+        Edit a file using Nano
+    </li>
+
+    <li>
+        <code>pwd</code><br>
+        Show current directory
+    </li>
+
+</ul>
+
+
+<h2>Homelab Website Editing</h2>
+
+<ul>
+
+    <li>
+        <code>~/docker/webpage/html</code><br>
+        Website file location on Athena
+    </li>
+
+    <li>
+        <code>sudo nano ~/docker/webpage/html/index.html</code><br>
+        Edit the homepage directly on Athena
+    </li>
+
+</ul>
+
+
+<h2>Network Troubleshooting</h2>
+
+<ul>
+
+    <li>
+        <code>ping IP_ADDRESS</code><br>
+        Test network connectivity
+    </li>
+
+    <li>
+        <code>curl -I WEBSITE</code><br>
+        Check HTTP response headers
+    </li>
+
+    <li>
+        <code>ss -tlnp</code><br>
+        Display listening network ports
+    </li>
+
+    <li>
+        <code>nslookup DOMAIN</code><br>
+        Test DNS resolution
+    </li>
+
+</ul>
+
+<hr>
+
+<p><a href="index.html">Back to Dashboard</a></p>
+
+</body>
+</html>
