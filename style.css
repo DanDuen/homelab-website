@@ -51,3 +51,11 @@ nav a {
 nav a:hover {
     color: #ffcc00;
 }
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
