@@ -1,7 +1,19 @@
+:root {
+    --primary-color: #1f4e79;
+    --secondary-color: #2f75b5;
+    --accent-color: #ff6600;
+
+    --background-color: #f4f4f4;
+    --text-color: #333333;
+
+    --card-background: #ffffff;
+    --border-color: #cccccc;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
 }
 
@@ -12,15 +24,15 @@ body {
 }
 
 h1 {
-    color: #1f4e79;
+    color: var(--primary-color);
 }
 
 h2 {
-    color: #2f75b5;
+    color: var(--secondary-color);
 }
 
 h3 {
-    color: #1f4e79;
+    color: var(--primary-color);
     margin-top: 0;
 }
 
@@ -29,19 +41,19 @@ a {
 }
 
 a:hover {
-    color: #ff6600;
+    color: var(--accent-color);
 }
 
 code {
     font-family: "Courier New", Courier, monospace;
     font-size: 1.1em;
-    background-color: #eeeeee;
+    background-color: var(--background-color);
     padding: 3px 6px;
     border-radius: 4px;
 }
 
 nav {
-    background-color: #1f4e79;
+    background-color: var(--primary-color);
     padding: 15px;
     text-align: center;
 }
@@ -54,7 +66,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffcc00;
+    color: var(--accent-color);
 }
 
 footer {
@@ -79,8 +91,8 @@ footer {
     flex-direction: column;
 
     /* Appearance */
-    background: white;
-    border: 1px solid #ccc;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: 0.2s;
@@ -89,4 +101,23 @@ footer {
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.card a {
+    margin-top: auto;
+    display: inline-block;
+    text-decoration: none;
+
+    background-color: var(--secondary-color);
+    color: var(--card-background);
+
+    padding: 10px 16px;
+    border-radius: 6px;
+
+    align-self: flex-start;
+}
+
+.card a:hover {
+    background-color: var(--primary-color);
+    color: var(--card-background);
 }
