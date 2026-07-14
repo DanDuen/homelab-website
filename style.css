@@ -19,6 +19,11 @@ h2 {
     color: #2f75b5;
 }
 
+h3 {
+    color: #1f4e79;
+    margin-top: 0;
+}
+
 a {
     color: #0066cc;
 }
@@ -58,4 +63,30 @@ footer {
     text-align: center;
     font-size: 14px;
     color: #666;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    /* Layout */
+    flex: 1 1 250px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    /* Appearance */
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
