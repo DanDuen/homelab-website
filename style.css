@@ -127,11 +127,11 @@ footer {
 }
 
 .dashboard {
-    height: 100%;
-
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 5px;
+    grid-template-rows: auto auto 1fr;
+    gap: 1px;
+    height: calc(100vh - 70px);
 }
 
 .dashboard-container {
@@ -141,6 +141,7 @@ footer {
     box-sizing: border-box;
 }
 
+/*
 .left-panel {
     display: grid;
     grid-template-rows: 1fr 2fr;
@@ -156,6 +157,7 @@ footer {
 
     height: 100%;
 }
+*/
 
 .widget{
     background: var(--card-background);
@@ -186,4 +188,60 @@ footer {
     font-size: 1.3rem;
     text-align: center;
     margin-bottom: 5px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+}
+
+.day {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+
+    height: 120px;
+    padding: 1px;
+}
+
+.weekday-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.photos-widget {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.time-widget {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.calendar-widget {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    overflow-y: auto;
+}
+
+.weather-widget {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.chores-widget {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.empty {
+    background: transparent;
+    border: none;
 }

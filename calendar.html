@@ -20,44 +20,52 @@
 <!-- <h1>Family Dashboard</h1> -->
 
 <div class="dashboard">
-    <div class="left-panel">
 
-        <div class="widget">
-            <h2>Photos</h2>
-            <p>Photo service integration coming soon</p>
+    <div class="widget photos-widget">
+        <h2>Photos</h2>
+        <p>Photo service integration coming soon</p>
+    </div>
+
+    <div class="widget time-widget">
+        <p id="date" class="date-display">Loading...</p>
+        <p id="clock" class="clock-display">Loading...</p>
+    </div>
+
+    <div class="widget calendar-widget">
+
+        <h2>Calendar</h2>
+
+        <div id="calendar-header" class="calendar-header">
         </div>
-    
-        <div class="widget">
-            <h2>Calendar</h2>
-            <p>Loading...</p>
+
+        <div class="weekday-grid">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
         </div>
+
+        <div id="calendar-grid" class="calendar-grid"></div>
 
     </div>
 
-    <div class="right-panel">
-
-        <div class="widget">
-            <!-- <h2>Time</h2> -->
-
-            <p id="date" class="date-display">Loading...</p>
-
-            <p id="clock" class="clock-display">Loading...</p>
-        </div>
-
-        <div class="widget">
-            <h2>Weather</h2>
-            <p>Loading...</p>
-        </div>
-
-        <div class="widget">
-            <h2>Chores</h2>
-            <p>Loading...</p>
-        </div>
+    <div class="widget weather-widget">
+        <h2>Weather</h2>
+        <p>Loading...</p>
     </div>
+
+    <div class="widget chores-widget">
+        <h2>Chores</h2>
+        <p>Loading...</p>
+    </div>
+
 </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 
 </body>
 </html>
