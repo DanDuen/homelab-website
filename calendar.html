@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Homelab Landing Page</title>
+    <title>Home Calendar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,19 +15,49 @@
     <a href="/calendar.html">Calendar</a>
 </nav>
 
-<div class="container">
+<div class="dashboard-container">
 
-<h1 style="text-align: center;">
-        Home Calendar
-</h1>
+<!-- <h1>Family Dashboard</h1> -->
 
-<h2>Coming Soon</h2>
+<div class="dashboard">
+    <div class="left-panel">
 
-<p>
-This dashboard will eventually display our family calendar,
-weather, meals, chores, shopping list, and other household
-information.
-</p>
+        <div class="widget">
+            <h2>Photos</h2>
+            <p>Photo service integration coming soon</p>
+        </div>
+    
+        <div class="widget">
+            <h2>Calendar</h2>
+            <p>Loading...</p>
+        </div>
+
+    </div>
+
+    <div class="right-panel">
+
+        <div class="widget">
+            <!-- <h2>Time</h2> -->
+
+            <p id="date" class="date-display">Loading...</p>
+
+            <p id="clock" class="clock-display">Loading...</p>
+        </div>
+
+        <div class="widget">
+            <h2>Weather</h2>
+            <p>Loading...</p>
+        </div>
+
+        <div class="widget">
+            <h2>Chores</h2>
+            <p>Loading...</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>

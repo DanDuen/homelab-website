@@ -17,6 +17,10 @@ body {
     margin: 0;
 }
 
+html, body {
+    height: 100%;
+}
+
 .container {
     max-width: 900px;
     margin: auto;
@@ -54,7 +58,7 @@ code {
 
 nav {
     background-color: var(--primary-color);
-    padding: 15px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -120,4 +124,66 @@ footer {
 .card a:hover {
     background-color: var(--primary-color);
     color: var(--card-background);
+}
+
+.dashboard {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5px;
+}
+
+.dashboard-container {
+    height: calc(100vh - 60px);
+    width: 100%;
+    padding: 1px;
+    box-sizing: border-box;
+}
+
+.left-panel {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    gap: 1px;
+
+    height: 100%;
+}
+
+.right-panel {
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr;
+    gap: 1px;
+
+    height: 100%;
+}
+
+.widget{
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.widget h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.clock-display {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.date-display {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 5px;
 }
