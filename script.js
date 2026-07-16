@@ -100,7 +100,8 @@ function createCalendar() {
 
             eventHTML += `
                 <div class="event">
-                    ${event.title}
+                    <div class="event-time">${event.time}</div>
+                    <div class="event-title">${event.title}</div>
                 </div>
             `;
 

@@ -267,3 +267,19 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.event {
+    margin-top: 5px;
+    padding: 4px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.08);
+    font-size: 0.8rem;
+}
+
+.event-time {
+    font-weight: bold;
+}
+
+.event-title {
+    overflow-wrap: break-word;
+}
