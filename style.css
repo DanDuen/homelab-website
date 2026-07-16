@@ -205,6 +205,12 @@ footer {
     padding: 1px;
 }
 
+.today {
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+}
+
 .weekday-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -244,4 +250,20 @@ footer {
 .empty {
     background: transparent;
     border: none;
+}
+
+.calendar-event {
+    background-color: var(--secondary-color);
+    color: white;
+
+    border-radius: 1px;
+
+    padding: 1px 2px;
+
+    margin-top: 1px;
+
+    font-size: 0.8rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -1,3 +1,6 @@
+let calendarEvents = [];
+
+
 function updateClock() {
 
     const now = new Date();
@@ -14,9 +17,11 @@ function updateClock() {
 
 }
 
+
 updateClock();
 
 setInterval(updateClock, 1000);
+
 
 
 function createCalendar() {
@@ -38,11 +43,13 @@ function createCalendar() {
 
     calendarGrid.innerHTML = "";
 
+
     const firstDay = new Date(
         year,
         today.getMonth(),
         1
     ).getDay();
+
 
     for (let i = 0; i < firstDay; i++) {
 
@@ -52,7 +59,8 @@ function createCalendar() {
 
         calendarGrid.appendChild(emptyBox);
 
-}
+    }
+
 
     const daysInMonth = new Date(
         year,
@@ -61,13 +69,49 @@ function createCalendar() {
     ).getDate();
 
 
+
     for (let day = 1; day <= daysInMonth; day++) {
 
         const dayBox = document.createElement("div");
 
         dayBox.className = "day";
 
-        dayBox.innerHTML = `<strong>${day}</strong>`;
+
+        if (
+            day === today.getDate()
+        ) {
+            dayBox.classList.add("today");
+        }
+
+
+        let dateString =
+            `${year}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+
+        let eventsForDay = calendarEvents.filter(event => {
+            return event.date === dateString;
+        });
+
+
+        let eventHTML = "";
+
+
+        eventsForDay.forEach(event => {
+
+            eventHTML += `
+                <div class="event">
+                    ${event.title}
+                </div>
+            `;
+
+        });
+
+
+        dayBox.innerHTML = `
+            <strong>${day}</strong>
+            ${eventHTML}
+        `;
+
 
         calendarGrid.appendChild(dayBox);
 
@@ -76,4 +120,24 @@ function createCalendar() {
 }
 
 
-createCalendar();
+
+
+fetch("calendar.json")
+    .then(response => response.json())
+    .then(data => {
+
+        calendarEvents = data;
+
+        createCalendar();
+
+    })
+    .catch(error => {
+
+        console.error(
+            "Calendar loading error:",
+            error
+        );
+
+        createCalendar();
+
+    });
