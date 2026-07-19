@@ -128,7 +128,7 @@ footer {
 
 .dashboard {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: auto auto 1fr;
     gap: 1px;
     height: calc(100vh - 70px);
@@ -144,8 +144,8 @@ footer {
 .widget{
     background: var(--card-background);
     border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 1px;
+    padding: 5px;
 
     height: 100%;
     box-sizing: border-box;
@@ -153,43 +153,43 @@ footer {
 
 .widget h2 {
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
     color: var(--primary-color);
     border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
+    padding-bottom: 1px;
 }
 
 .clock-display {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
-    margin: 20px 0;
+    margin: 1px 0;
 }
 
 .date-display {
     font-size: 1.3rem;
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
 }
 
 .calendar-header {
     text-align: center;
     font-weight: bold;
     color: var(--primary-color);
-    margin-bottom: 10px;
+    margin-bottom: 1px;
 }
 
 .week-agenda {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 1px;
 }
 
 .day-row {
     display: flex;
-    gap: 12px;
-    padding: 8px;
-    border-radius: 6px;
+    gap: 1px;
+    padding: 1px;
+    border-radius: 1px;
     border: 1px solid var(--border-color);
 }
 
@@ -215,9 +215,10 @@ footer {
     font-style: italic;
 }
 
-.photos-widget {
+.quotes-widget {
     grid-column: 1;
     grid-row: 1;
+    overflow-y: auto;
 }
 
 .time-widget {
@@ -310,4 +311,86 @@ footer {
 
 .weather-low {
     color: #666;
+}
+
+/* ----------------------------------------
+   Responsive layout for phone/tablet
+   ---------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .dashboard-container {
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .quotes-widget,
+    .time-widget,
+    .calendar-widget,
+    .weather-widget,
+    .chores-widget {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .calendar-widget {
+        overflow-y: visible;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .clock-display {
+        font-size: 2rem;
+    }
+
+    .day-label {
+        width: 90px;
+        font-size: 0.9rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .day-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .day-label {
+        width: auto;
+    }
+
+    .weather-display {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+}
+
+.quote-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.quote-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 1px;
+}
+
+.quote-author {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--secondary-color);
 }

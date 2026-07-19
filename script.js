@@ -302,3 +302,62 @@ initWeather();
 
 // Refresh every 30 minutes (weather doesn't change as fast as your calendar)
 setInterval(initWeather, 30 * 60 * 1000);
+
+// ----------------------
+// Quotes
+// ----------------------
+
+let quotesList = [];
+
+
+function renderRandomQuote() {
+
+    const quoteEl = document.getElementById("quote-display");
+
+    if (quotesList.length === 0) {
+        quoteEl.textContent = "No quotes available";
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * quotesList.length);
+    const chosen = quotesList[randomIndex];
+
+    quoteEl.innerHTML = `
+        <div class="quote-text">"${chosen.quote}"</div>
+        <div class="quote-author">— ${chosen.author}</div>
+    `;
+
+}
+
+
+async function loadQuotes() {
+
+    try {
+
+        const response = await fetch(
+            `quotes.json?t=${Date.now()}`
+        );
+
+        quotesList = await response.json();
+
+    } catch (error) {
+
+        console.error("Quotes loading error:", error);
+
+        quotesList = [];
+
+    }
+
+    renderRandomQuote();
+
+}
+
+
+// Initial load
+loadQuotes();
+
+// Pick a new random quote every 60 seconds
+setInterval(renderRandomQuote, 60000);
+
+// Re-fetch the file every 10 minutes in case you've added new quotes
+setInterval(loadQuotes, 10 * 60 * 1000);

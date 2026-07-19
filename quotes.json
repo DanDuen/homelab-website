@@ -1,0 +1,65 @@
+[
+    { "quote": "The only way to do great work is to love what you do.", "author": "Steve Jobs" },
+    { "quote": "Simplicity is the ultimate sophistication.", "author": "Unknown (often misattributed to Leonardo da Vinci)" },
+    { "quote": "Well done is better than well said.", "author": "Benjamin Franklin" },
+    { "quote": "The best way to predict the future is to invent it.", "author": "Alan Kay" },
+    { "quote": "Make it work, make it right, make it fast.", "author": "Kent Beck" },
+
+    { "quote": "It's kind of fun to do the impossible.", "author": "Walt Disney" },
+    { "quote": "All our dreams can come true, if we have the courage to pursue them.", "author": "Walt Disney" },
+    { "quote": "We keep moving forward, opening new doors and doing new things, because we're curious and curiosity keeps leading us down new paths.", "author": "Walt Disney" },
+
+    { "quote": "All we have to decide is what to do with the time that is given us.", "author": "J.R.R. Tolkien" },
+    { "quote": "Not all those who wander are lost.", "author": "J.R.R. Tolkien" },
+    { "quote": "Even the smallest person can change the course of the future.", "author": "J.R.R. Tolkien" },
+    { "quote": "The world is not in your books and maps. It's out there.", "author": "Gandalf, The Hobbit: An Unexpected Journey (2012 film)" },
+
+    { "quote": "We're all stories in the end. Just make it a good one, eh?", "author": "The Eleventh Doctor, Doctor Who" },
+    { "quote": "Never cruel or cowardly. Never give up. Never give in.", "author": "The Twelfth Doctor, Doctor Who" },
+    { "quote": "The universe is big. It's vast and complicated and ridiculous. And sometimes, very rarely, impossible things just happen and we call them miracles.", "author": "The Doctor, Doctor Who" },
+
+    { "quote": "Sometimes life is like this dark tunnel. You can't always see the light at the end of the tunnel, but if you just keep moving, you will come to a better place.", "author": "Uncle Iroh, Avatar: The Last Airbender" },
+    { "quote": "While it is always best to believe in oneself, a little help from others can be a great blessing.", "author": "Uncle Iroh, Avatar: The Last Airbender" },
+    { "quote": "Pride is not the opposite of shame, but its source. True humility is the only antidote to shame.", "author": "Uncle Iroh, Avatar: The Last Airbender" },
+
+    { "quote": "The future belongs to those who believe in the beauty of their dreams.", "author": "Unknown (often misattributed to Eleanor Roosevelt)" },
+    { "quote": "Do what you can, with what you have, where you are.", "author": "Theodore Roosevelt" },
+    { "quote": "In the middle of difficulty lies opportunity.", "author": "Albert Einstein" },
+    { "quote": "The important thing is not to stop questioning. Curiosity has its own reason for existing.", "author": "Albert Einstein" },
+    { "quote": "It does not matter how slowly you go as long as you do not stop.", "author": "Unknown (often misattributed to Confucius)" },
+    { "quote": "The journey of a thousand miles begins with one step.", "author": "Lao Tzu" },
+    { "quote": "Great things are done by a series of small things brought together.", "author": "Vincent van Gogh" },
+    { "quote": "The only limit to our realization of tomorrow is our doubts of today.", "author": "Franklin D. Roosevelt" },
+
+    { "quote": "The best way out is always through.", "author": "Robert Frost" },
+    { "quote": "What we know is a drop, what we don't know is an ocean.", "author": "Unknown (often misattributed to Isaac Newton)" },
+    { "quote": "If you want to go fast, go alone. If you want to go far, go together.", "author": "African Proverb" },
+    { "quote": "The person who asks a question is a fool for a minute, the person who does not ask is a fool for life.", "author": "Unknown (often misattributed to Confucius)" },
+
+    { "quote": "It is our choices that show what we truly are, far more than our abilities.", "author": "Albus Dumbledore, Harry Potter" },
+    { "quote": "Happiness can be found even in the darkest of times, if one only remembers to turn on the light.", "author": "Albus Dumbledore, Harry Potter" },
+    { "quote": "The ones who are crazy enough to think they can change the world are the ones who do.", "author": "Steve Jobs" },
+
+    { "quote": "Stay hungry. Stay foolish.", "author": "Steve Jobs" },
+    { "quote": "The greatest glory in living lies not in never falling, but in rising every time we fall.", "author": "Nelson Mandela" },
+    { "quote": "Education is the most powerful weapon which you can use to change the world.", "author": "Nelson Mandela" },
+    { "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts.", "author": "Winston Churchill" },
+
+    { "quote": "The only thing we have to fear is fear itself.", "author": "Franklin D. Roosevelt" },
+    { "quote": "That which does not kill us makes us stronger.", "author": "Friedrich Nietzsche" },
+    { "quote": "The unexamined life is not worth living.", "author": "Socrates" },
+    { "quote": "In three words I can sum up everything I've learned about life: it goes on.", "author": "Robert Frost" },
+    { "quote": "I have not failed. I've just found 10,000 ways that won't work.", "author": "Thomas Edison" },
+    { "quote": "Not everything that is faced can be changed, but nothing can be changed until it is faced.", "author": "James Baldwin" }
+
+    { "quote": "You have power over your mind—not outside events. Realize this, and you will find strength.", "author": "Marcus Aurelius, Meditations, Book II" },
+    { "quote": "It is not the man who has too little, but the man who craves more, that is poor.", "author": "Seneca, Letters to Lucilius" },
+    { "quote": "Wealth consists not in having great possessions, but in having few wants.", "author": "Epictetus, Discourses" },
+    { "quote": "Know thyself.", "author": "Inscribed at the Temple of Apollo at Delphi, attributed to Socrates by Plato" }
+
+    { "quote": "I can do all things through Christ which strengtheneth me.", "author": "Philippians 4:13, KJV" },
+    { "quote": "Trust in the LORD with all thine heart; and lean not unto thine own understanding.", "author": "Proverbs 3:5, KJV" },
+    { "quote": "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.", "author": "Joshua 1:9, KJV" },
+    { "quote": "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.", "author": "Isaiah 40:31, KJV" },
+    { "quote": "God is our refuge and strength, a very present help in trouble.", "author": "Psalm 46:1, KJV" }
+]
