@@ -141,24 +141,6 @@ footer {
     box-sizing: border-box;
 }
 
-/*
-.left-panel {
-    display: grid;
-    grid-template-rows: 1fr 2fr;
-    gap: 1px;
-
-    height: 100%;
-}
-
-.right-panel {
-    display: grid;
-    grid-template-rows: 1fr 1fr 2fr;
-    gap: 1px;
-
-    height: 100%;
-}
-*/
-
 .widget{
     background: var(--card-background);
     border: 1px solid var(--border-color);
@@ -190,35 +172,47 @@ footer {
     margin-bottom: 5px;
 }
 
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1px;
+.calendar-header {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
 }
 
-.day {
-    background-color: var(--card-background);
+.week-agenda {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.day-row {
+    display: flex;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 6px;
     border: 1px solid var(--border-color);
-    border-radius: 5px;
-
-    height: 120px;
-    padding: 1px;
 }
 
-.today {
+.day-row.today {
     background-color: var(--secondary-color);
     color: white;
     font-weight: bold;
+    border-color: var(--secondary-color);
 }
 
-.weekday-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1px;
-
-    text-align: center;
+.day-label {
+    width: 130px;
+    flex-shrink: 0;
     font-weight: bold;
-    margin-bottom: 5px;
+}
+
+.day-events {
+    flex: 1;
+}
+
+.no-events {
+    opacity: 0.6;
+    font-style: italic;
 }
 
 .photos-widget {
@@ -245,11 +239,6 @@ footer {
 .chores-widget {
     grid-column: 2;
     grid-row: 3;
-}
-
-.empty {
-    background: transparent;
-    border: none;
 }
 
 .calendar-event {
@@ -282,4 +271,43 @@ footer {
 
 .event-title {
     overflow-wrap: break-word;
+}
+
+.weather-display {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.weather-day {
+    text-align: center;
+    flex: 1;
+}
+
+.weather-label {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.weather-icon {
+    font-size: 2.5rem;
+}
+
+.weather-desc {
+    font-size: 0.85rem;
+    margin: 5px 0;
+}
+
+.weather-temps {
+    font-size: 1.1rem;
+}
+
+.weather-high {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.weather-low {
+    color: #666;
 }
