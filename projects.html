@@ -19,43 +19,54 @@
 
 <div class="container">
 
-<h1 style="text-align: center;">
-        Homelab Projects
-</h1>
+<h1 style="text-align: center;">Homelab Projects</h1>
 
-<p>
-    A collection of completed projects and ideas planned for future development.
-</p>
+<p>Drag cards between cells, or use the form to add new ones.</p>
 
-<hr>
+<div class="add-card-form">
+    <input type="text" id="new-title" placeholder="New project...">
+    <select id="new-column">
+        <option value="backlog">Backlog</option>
+        <option value="todo">To Do</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+    </select>
+    <select id="new-category">
+        <option value="personal">Personal</option>
+        <option value="professional">Professional</option>
+    </select>
+    <button onclick="addCard()">+ Add</button>
+</div>
 
-<h2>
-        Future Projects
-</h2>
+<div class="kanban-grid">
 
-<ul>
-    <li>Pi NAS</li>
-    <li>Pi Cloud</li>
-    <li>VLAN</li>
-    <li>Honeypot</li>
-    <li>Mail server</li>
-    <li>Automated scans</li>
-    <li>Network dashboard</li>
-</ul>
+    <div class="kanban-corner"></div>
+    <div class="kanban-col-header">Backlog</div>
+    <div class="kanban-col-header">To Do</div>
+    <div class="kanban-col-header">In Progress</div>
+    <div class="kanban-col-header">Completed</div>
 
+    <div class="kanban-row-header">Professional</div>
+    <div class="kanban-cell" data-column="backlog" data-category="professional"></div>
+    <div class="kanban-cell" data-column="todo" data-category="professional"></div>
+    <div class="kanban-cell" data-column="in-progress" data-category="professional"></div>
+    <div class="kanban-cell" data-column="completed" data-category="professional"></div>
 
-<h2>
-        Past Projects
-</h2>
-
-<ul>
-    <li>Pi-hole (DNS blackhole)</li>
-    <li>Pi VPN using WireGuard</li>
-    <li>Pi webserver using NGINX</li>
-    <li>Watchdog</li>
-</ul>
+    <div class="kanban-row-header">Personal</div>
+    <div class="kanban-cell" data-column="backlog" data-category="personal"></div>
+    <div class="kanban-cell" data-column="todo" data-category="personal"></div>
+    <div class="kanban-cell" data-column="in-progress" data-category="personal"></div>
+    <div class="kanban-cell" data-column="completed" data-category="personal"></div>
 
 </div>
+
+<h2>Archive</h2>
+<p>Old completed projects, moved out of the main board.</p>
+<div class="archive-list" id="archive-list"></div>
+
+</div>
+
+<script src="projects.js" defer></script>
 
 </body>
 

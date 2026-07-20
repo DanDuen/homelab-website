@@ -237,7 +237,7 @@ footer {
     grid-row: 2;
 }
 
-.chores-widget {
+.projects-widget {
     grid-column: 2;
     grid-row: 3;
 }
@@ -374,6 +374,19 @@ footer {
 
 }
 
+.weather-location {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.weather-rain {
+    font-size: 0.9rem;
+    margin-top: 4px;
+    color: var(--secondary-color);
+}
+
 .quote-display {
     display: flex;
     flex-direction: column;
@@ -393,4 +406,152 @@ footer {
     font-size: 1rem;
     font-weight: bold;
     color: var(--secondary-color);
+}
+
+.add-card-form {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.add-card-form input {
+    flex: 1;
+    min-width: 150px;
+    padding: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.add-card-form select {
+    padding: 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.add-card-form button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
+    background: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+}
+
+.add-card-form button:hover {
+    background: var(--primary-color);
+}
+
+.kanban-grid {
+    display: grid;
+    grid-template-columns: 120px repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.kanban-corner {
+    background: transparent;
+}
+
+.kanban-col-header,
+.kanban-row-header {
+    font-weight: bold;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+
+.kanban-cell {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.kanban-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: grab;
+    font-size: 0.9rem;
+}
+
+.kanban-card:active {
+    cursor: grabbing;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+.delete-btn,
+.archive-btn,
+.restore-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0 4px;
+}
+
+.delete-btn:hover {
+    color: #c0392b;
+}
+
+.archive-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.archive-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+.archive-item span:first-child {
+    flex: 1;
+}
+
+.archive-tag {
+    font-size: 0.75rem;
+    background: var(--secondary-color);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.project-group {
+    margin-bottom: 12px;
+}
+
+.project-group:last-child {
+    margin-bottom: 0;
+}
+
+.project-group-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    margin-bottom: 4px;
 }

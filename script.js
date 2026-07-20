@@ -194,7 +194,7 @@ async function fetchWeather(latitude, longitude) {
     const url =
         `https://api.open-meteo.com/v1/forecast` +
         `?latitude=${latitude}&longitude=${longitude}` +
-        `&daily=weathercode,temperature_2m_max,temperature_2m_min` +
+        `&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
         `&temperature_unit=fahrenheit` +
         `&timezone=auto` +
         `&forecast_days=2`;
@@ -210,9 +210,43 @@ async function fetchWeather(latitude, longitude) {
 }
 
 
-function renderWeather(data) {
+async function fetchLocationName(latitude, longitude) {
+
+    try {
+
+        const url =
+            `https://api.bigdatacloud.net/data/reverse-geocode-client` +
+            `?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Reverse geocode failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Prefer city/town name, fall back to broader region if unavailable
+        return data.city || data.locality || data.principalSubdivision || "Unknown location";
+
+    } catch (error) {
+
+        console.error("Location lookup error:", error);
+        return "Unknown location";
+
+    }
+
+}
+
+
+function renderWeather(data, locationName) {
 
     const weatherEl = document.getElementById("weather");
+    const locationEl = document.getElementById("weather-location");
+
+    if (locationEl) {
+        locationEl.textContent = locationName;
+    }
 
     const days = data.daily;
 
@@ -226,6 +260,7 @@ function renderWeather(data) {
 
         const high = Math.round(days.temperature_2m_max[i]);
         const low = Math.round(days.temperature_2m_min[i]);
+        const rainChance = days.precipitation_probability_max[i];
 
         html += `
             <div class="weather-day">
@@ -236,6 +271,7 @@ function renderWeather(data) {
                     <span class="weather-high">${high}°</span>
                     <span class="weather-low">${low}°</span>
                 </div>
+                <div class="weather-rain">💧 ${rainChance}%</div>
             </div>
         `;
 
@@ -250,9 +286,12 @@ async function loadWeather(latitude, longitude) {
 
     try {
 
-        const data = await fetchWeather(latitude, longitude);
+        const [weatherData, locationName] = await Promise.all([
+            fetchWeather(latitude, longitude),
+            fetchLocationName(latitude, longitude)
+        ]);
 
-        renderWeather(data);
+        renderWeather(weatherData, locationName);
 
     } catch (error) {
 
@@ -295,6 +334,13 @@ function initWeather() {
     );
 
 }
+
+
+// Initial load
+initWeather();
+
+// Refresh every 30 minutes
+setInterval(initWeather, 30 * 60 * 1000);
 
 
 // Initial load
@@ -361,3 +407,63 @@ setInterval(renderRandomQuote, 60000);
 
 // Re-fetch the file every 10 minutes in case you've added new quotes
 setInterval(loadQuotes, 10 * 60 * 1000);
+
+// ----------------------
+// In-Progress Projects
+// ----------------------
+
+// Same API the projects.html Kanban board talks to.
+const PROJECTS_API_BASE = "http://192.168.2.64:5050";
+
+
+async function loadInProgressProjects() {
+
+    const container = document.getElementById("projects-inprogress");
+
+    try {
+
+        const response = await fetch(`${PROJECTS_API_BASE}/projects`);
+        const allProjects = await response.json();
+
+        const inProgress = allProjects.filter(
+            p => p.column === "in-progress" && !p.archived
+        );
+
+        const professional = inProgress.filter(p => p.category === "professional");
+        const personal = inProgress.filter(p => p.category === "personal");
+
+        const renderGroup = (label, items) => {
+
+            const itemsHTML = items.length === 0
+                ? `<div class="no-events">Nothing in progress</div>`
+                : items.map(p => `<div class="project-item">${p.title}</div>`).join("");
+
+            return `
+                <div class="project-group">
+                    <div class="project-group-label">${label}</div>
+                    ${itemsHTML}
+                </div>
+            `;
+
+        };
+
+        container.innerHTML =
+            renderGroup("Professional", professional) +
+            renderGroup("Personal", personal);
+
+    } catch (error) {
+
+        console.error("Failed to load in-progress projects:", error);
+        container.textContent = "Unavailable";
+
+    }
+
+}
+
+
+// Initial load
+loadInProgressProjects();
+
+// Refresh every 2 minutes — quick enough to reflect changes you make
+// on the Kanban board without hammering the API
+setInterval(loadInProgressProjects, 2 * 60 * 1000);
