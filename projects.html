@@ -3,6 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>
+    (function() {
+        const stored = localStorage.getItem("theme");
+        if (stored) {
+            document.documentElement.setAttribute("data-theme", stored);
+        }
+    })();
+    </script>
     <title>Projects</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,6 +23,7 @@
     <a href="/commands.html">Commands</a>
     <a href="/projects.html">Projects</a>
     <a href="/calendar.html">Calendar</a>
+    <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
 </nav>
 
 <div class="container">
@@ -67,7 +76,7 @@
 </div>
 
 <script src="projects.js" defer></script>
-
+<script src="theme.js" defer></script>
 </body>
 
 </html>

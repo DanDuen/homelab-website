@@ -2,6 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script>
+    (function() {
+        const stored = localStorage.getItem("theme");
+        if (stored) {
+            document.documentElement.setAttribute("data-theme", stored);
+        }
+    })();
+    </script>
     <title>Homelab Commands</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,6 +22,7 @@
     <a href="/commands.html">Commands</a>
     <a href="/projects.html">Projects</a>
     <a href="/calendar.html">Calendar</a>
+    <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
 </nav>
 
 <div class="container">
@@ -73,6 +82,35 @@
 
 
 <h2>
+    System Health
+</h2>
+
+<ul>
+
+    <li>
+        <code>df -h</code><br>
+        Check disk space usage across all drives
+    </li>
+
+    <li>
+        <code>free -h</code><br>
+        Check memory (RAM) usage
+    </li>
+
+    <li>
+        <code>vcgencmd measure_temp</code><br>
+        Check the Raspberry Pi's CPU temperature
+    </li>
+
+    <li>
+        <code>htop</code><br>
+        Interactive view of running processes and resource usage (press q to quit)
+    </li>
+
+</ul>
+
+
+<h2>
     Docker Commands
 </h2>
 
@@ -85,7 +123,7 @@
 
     <li>
         <code>docker ps -a</code><br>
-        Show all containers
+        Show all containers, including stopped ones
     </li>
 
     <li>
@@ -104,8 +142,23 @@
     </li>
 
     <li>
+        <code>docker compose up -d --build</code><br>
+        Rebuild the image and start services (use after editing code, not just config)
+    </li>
+
+    <li>
         <code>docker compose down</code><br>
-        Stop services defined in a Docker Compose file
+        Stop and remove services defined in a Docker Compose file
+    </li>
+
+    <li>
+        <code>docker compose logs -f</code><br>
+        Follow live logs for a service (Ctrl+C to stop watching)
+    </li>
+
+    <li>
+        <code>docker system prune</code><br>
+        Remove unused containers, networks, and images to free up disk space
     </li>
 
 </ul>
@@ -218,6 +271,44 @@
 
 
 <h2>
+    Homelab Services
+</h2>
+
+<p>
+    Checking on the custom scripts and APIs running behind the dashboard.
+</p>
+
+<ul>
+
+    <li>
+        <code>systemctl status calendar-sync.timer</code><br>
+        Confirm the calendar sync timer is active and check when it last ran
+    </li>
+
+    <li>
+        <code>systemctl status calendar-sync.service</code><br>
+        Check the result of the most recent calendar sync run
+    </li>
+
+    <li>
+        <code>journalctl -u calendar-sync.service -n 50</code><br>
+        View the last 50 log lines from the calendar sync script (useful for errors)
+    </li>
+
+    <li>
+        <code>journalctl -u calendar-sync.service -f</code><br>
+        Follow the calendar sync logs live as they happen
+    </li>
+
+    <li>
+        <code>curl http://localhost:5050/projects</code><br>
+        Quickly check that the Projects API is running and returning data
+    </li>
+
+</ul>
+
+
+<h2>
     Network Troubleshooting
 </h2>
 
@@ -250,28 +341,60 @@
 </h2>
 
 <ul>
-    <li><strong>git status</strong> - Show changed files and repository status.</li>
 
-    <li><strong>git add .</strong> - Stage all changed files for the next commit.</li>
+    <li>
+        <code>git status</code><br>
+        Show changed files and repository status
+    </li>
 
-    <li><strong>git commit -m "message"</strong> - Save a snapshot of your changes locally.</li>
+    <li>
+        <code>git add .</code><br>
+        Stage all changed files for the next commit
+    </li>
 
-    <li><strong>git push</strong> - Upload committed changes to GitHub.</li>
+    <li>
+        <code>git commit -m "message"</code><br>
+        Save a snapshot of your changes locally
+    </li>
 
-    <li><strong>git pull</strong> - Download the latest changes from GitHub.</li>
+    <li>
+        <code>git push</code><br>
+        Upload committed changes to GitHub
+    </li>
 
-    <li><strong>git log --oneline</strong> - Show a compact history of commits.</li>
+    <li>
+        <code>git pull</code><br>
+        Download the latest changes from GitHub
+    </li>
 
-    <li><strong>git diff</strong> - Show what has changed since the last commit.</li>
+    <li>
+        <code>git log --oneline</code><br>
+        Show a compact history of commits
+    </li>
 
-    <li><strong>git remote -v</strong> - Display the connected GitHub repository.</li>
+    <li>
+        <code>git diff</code><br>
+        Show what has changed since the last commit
+    </li>
 
-    <li><strong>git restore filename</strong> - Discard changes to a file since the last commit.</li>
+    <li>
+        <code>git remote -v</code><br>
+        Display the connected GitHub repository
+    </li>
 
-    <li><strong>git restore .</strong> - Restore all tracked files to the last committed version.</li>
+    <li>
+        <code>git restore FILENAME</code><br>
+        Discard changes to a file since the last commit
+    </li>
+
+    <li>
+        <code>git restore .</code><br>
+        Restore all tracked files to the last committed version
+    </li>
+
 </ul>
 
 </div>
-
+<script src="theme.js" defer></script>
 </body>
 </html>

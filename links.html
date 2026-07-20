@@ -2,6 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script>
+    (function() {
+        const stored = localStorage.getItem("theme");
+        if (stored) {
+            document.documentElement.setAttribute("data-theme", stored);
+        }
+    })();
+    </script>
     <title>Homelab Links</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,6 +22,7 @@
     <a href="/commands.html">Commands</a>
     <a href="/projects.html">Projects</a>
     <a href="/calendar.html">Calendar</a>
+    <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
 </nav>
 
 <div class="container">
@@ -26,85 +35,75 @@
     Core Infrastructure
 </h2>
 
-     <div class="card-container">
+<div class="card-container">
 
     <div class="card">
         <h3>Pi-hole</h3>
-
         <p>Network-wide DNS ad blocker.</p>
-
         <a href="http://pihole.home.lab" target="_blank">Open</a>
     </div>
 
     <div class="card">
         <h3>Homepage Dashboard</h3>
-
         <p>Main service dashboard and monitoring page</p>
-
         <a href="http://homepage.home.lab" target="_blank">Open</a>
     </div>
 
     <div class="card">
         <h3>Portainer</h3>
-
         <p>Docker container management interface</p>
-
         <a href="http://portainer.home.lab" target="_blank">Open</a>
     </div>
 
-
     <div class="card">
         <h3>NGINX Proxy Manager</h3>
-
         <p>Reverse proxy and local domain management</p>
-
         <a href="http://proxy.home.lab" target="_blank">Open</a>
     </div>
 
- </div>
+</div>
 
 
 <h2>
     Applications
 </h2>
 
-    <div class="card-container">
+<div class="card-container">
 
     <div class="card">
-           <h3>Linkding</h3>
-
+        <h3>Linkding</h3>
         <p>Self-hosted bookmark manager</p>
-
         <a href="http://links.home.lab" target="_blank">Open</a>
     </div>
-        
+
     <div class="card">
-           <h3>Smart Calendar</h3>
-
-        <p>Family calendar, weather, meal planning, and home dashboard (future project)</p>
-
+        <h3>Smart Calendar</h3>
+        <p>Personal operations dashboard: weekly agenda, weather, quotes, and in-progress projects</p>
         <a href="http://calendar.home.lab" target="_blank">Open</a>
-    </div>   
+    </div>
 
-</div> 
+    <div class="card">
+        <h3>Projects Board</h3>
+        <p>Kanban board for tracking professional and personal homelab projects</p>
+        <a href="http://calendar.home.lab/projects.html" target="_blank">Open</a>
+    </div>
 
+</div>
 
 
 <h2>
     Web Projects
 </h2>
 
-    <div class="card-container">
+<div class="card-container">
 
     <div class="card">
-           <h3>Homelab Website</h3>
-
+        <h3>Homelab Website</h3>
         <p>Personal homelab documentation and project dashboard</p>
-
         <a href="http://web.home.lab" target="_blank">Open</a>
     </div>
 
-    </div>
+</div>
 
 <h2>
     Direct IP Access
@@ -118,7 +117,7 @@
 
     <li>
         <a href="http://192.168.0.117:8080/admin" target="_blank">
-        Pi-hole Admin (IP)
+        Pi-hole Admin (IP, Hermes / IoT VLAN)
         </a>
     </li>
 
@@ -131,6 +130,24 @@
     <li>
         <a href="https://192.168.2.64:9443" target="_blank">
         Portainer (IP)
+        </a>
+    </li>
+
+    <li>
+        <a href="http://192.168.2.64:3000" target="_blank">
+        Homepage Dashboard (IP)
+        </a>
+    </li>
+
+    <li>
+        <a href="http://192.168.2.64:81" target="_blank">
+        NGINX Proxy Manager Admin (IP)
+        </a>
+    </li>
+
+    <li>
+        <a href="http://192.168.2.64:5050/projects" target="_blank">
+        Projects API (IP, raw JSON)
         </a>
     </li>
 
@@ -153,6 +170,6 @@
 </ul>
 
 </div>
-
+<script src="theme.js" defer></script>
 </body>
 </html>
