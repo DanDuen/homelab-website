@@ -595,3 +595,8 @@ footer {
     background: rgba(255, 255, 255, 0.15);
     color: white;
 }
+
+.kanban-card-ghost {
+    opacity: 0.4;
+    background: var(--secondary-color);
+}

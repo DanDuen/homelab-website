@@ -26,7 +26,6 @@ function makeCard(project) {
 
     const card = document.createElement("div");
     card.className = "kanban-card";
-    card.draggable = true;
     card.dataset.id = project.id;
 
     let buttons = `<button class="delete-btn" onclick="deleteCard('${project.id}')">✕</button>`;
@@ -36,10 +35,6 @@ function makeCard(project) {
     }
 
     card.innerHTML = `<span>${project.title}</span><div class="card-buttons">${buttons}</div>`;
-
-    card.addEventListener("dragstart", (e) => {
-        e.dataTransfer.setData("text/plain", project.id);
-    });
 
     return card;
 
@@ -97,6 +92,37 @@ function renderBoard() {
         });
 
     }
+
+    initSortable();
+
+}
+
+
+function initSortable() {
+
+    document.querySelectorAll(".kanban-cell").forEach(cell => {
+
+        new Sortable(cell, {
+
+            group: "kanban",       // shared group name = cards can move between any cell with this name
+            animation: 150,
+            ghostClass: "kanban-card-ghost",
+
+            onEnd: function (event) {
+
+                const cardId = event.item.dataset.id;
+                const newCell = event.to;
+
+                const newColumn = newCell.dataset.column;
+                const newCategory = newCell.dataset.category;
+
+                moveCard(cardId, newColumn, newCategory);
+
+            }
+
+        });
+
+    });
 
 }
 
@@ -161,11 +187,20 @@ async function moveCard(id, newColumn, newCategory) {
             body: JSON.stringify({ column: newColumn, category: newCategory })
         });
 
-        await loadProjects();
+        // Update local state without a full reload, so the drag
+        // animation doesn't visually "snap" while we wait on the network
+        const project = projects.find(p => p.id === id);
+        if (project) {
+            project.column = newColumn;
+            project.category = newCategory;
+        }
 
     } catch (error) {
 
         console.error("Failed to move project:", error);
+        // If the save failed, reload from the server to undo the
+        // visual move and reflect what's actually saved
+        await loadProjects();
 
     }
 
@@ -212,28 +247,6 @@ async function restoreCard(id) {
     }
 
 }
-
-
-// Set up drop zones on the 8 grid cells
-document.querySelectorAll(".kanban-cell").forEach(cell => {
-
-    cell.addEventListener("dragover", (e) => {
-        e.preventDefault();
-    });
-
-    cell.addEventListener("drop", (e) => {
-
-        e.preventDefault();
-
-        const id = e.dataTransfer.getData("text/plain");
-        const newColumn = cell.dataset.column;
-        const newCategory = cell.dataset.category;
-
-        moveCard(id, newColumn, newCategory);
-
-    });
-
-});
 
 
 // Initial load
