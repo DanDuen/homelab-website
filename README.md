@@ -1,17 +1,27 @@
-Homelab Dashboard
+# Homelab Dashboard
 
-A self-hosted personal operations dashboard, built and run on a Raspberry Pi homelab. This started as a family calendar project and evolved into a broader dashboard: a weekly agenda, live weather, rotating quotes, and a full Kanban board for tracking homelab projects — all served from a Raspberry Pi and reverse-proxied through NGINX.
+A self-hosted personal website and dashboard, built and run on a Raspberry Pi homelab. This started as a family calendar project and has grown into a broader homelab site: documentation, a service directory, and a Kanban board for tracking projects, all served from a Raspberry Pi and reverse-proxied through NGINX. The calendar has since been retired, and the dashboard side (weather, quotes, and API-driven pages) is being rebuilt. This is an ongoing project with no set end. I expect to keep adding to it and editing it.
 
-This is a personal learning project. The goal wasn't to build a polished commercial product — it was to actually use something I built every day, while learning Linux system administration, Docker, networking, and enough Python/JavaScript to wire real services together.
+This is a personal learning project. The goal wasn't to build a polished commercial product. It was to actually use something I built every day, while learning Linux system administration, Docker, networking, and enough Python/JavaScript to wire real services together. The frontend is currently being rebuilt from scratch, one piece at a time, so that I understand every line of it.
 
-What it does
-Weekly Agenda — pulls events from a Google Calendar (via a private iCal feed), converted to JSON by a Python script and refreshed automatically every 5 minutes via a systemd timer.
-Live Weather — current-location weather (today + tomorrow), including temperature range and chance of precipitation, fetched client-side from the Open-Meteo API. Falls back to a fixed location if browser geolocation is unavailable.
-Rotating Quotes — a simple JSON-backed quote rotation, fact-checked against primary sources rather than quote-aggregator sites.
-Projects Kanban Board — a 4-column x 2-row board (Backlog / To Do / In Progress / Completed, split by Professional / Personal), backed by a small Flask REST API that persists data to disk. Includes drag-and-drop, an archive for old completed projects, and a live "In Progress" summary on the main dashboard.
-Light/Dark Mode — automatically matches the system's light/dark preference, with a manual toggle that overrides it and persists across visits.
-Responsive Layout — CSS Grid layout that adapts from a wide desktop dashboard down to a single-column view on phones and tablets.
-Architecture
+## What it does today
+
+- **Projects Kanban Board** — a 4-column x 2-row board (Backlog / To Do / In Progress / Completed, split by Professional / Personal), backed by a small Flask REST API that persists data to disk. Includes drag-and-drop and an archive for old completed projects.
+- **Service Directory** — a links page for the services running in the homelab, plus direct-IP fallbacks in case local DNS is unavailable.
+- **Command Reference** — a cheat sheet of the SSH, Docker, NGINX, Pi-hole, and Git commands I use most.
+- **Light/Dark Mode** — a manual toggle that persists across visits.
+
+## Planned
+
+- **Weather page** — current conditions and forecast from the Open-Meteo API (no key required), cached client-side to avoid unnecessary requests.
+- **Rotating quotes** — a JSON-backed quote rotation, with quotes checked against primary sources rather than quote-aggregator sites.
+- **"In Progress" summary** — a live view of in-progress projects from the Kanban board.
+- **More API-driven pages** — details to come as I add them.
+- **Documentation pages** — network documentation, a server inventory, and homelab diagrams.
+
+## Architecture
+
+```
 Raspberry Pi 5 ("Athena")
 │
 ├── Docker
@@ -19,34 +29,35 @@ Raspberry Pi 5 ("Athena")
 │   ├── nginx-proxy-manager (reverse proxy, local domain routing)
 │   └── projects-api (Flask REST API, persists to JSON on disk)
 │
-├── systemd
-│   └── calendar-sync.timer → calendar-sync.service
-│         (runs sync_calendar.py every 5 minutes)
-│
 └── Static site (served via Docker nginx)
-    ├── index.html, calendar.html, projects.html, commands.html, links.html
+    ├── index.html, projects.html, commands.html, links.html
     ├── script.js, projects.js, theme.js
     ├── style.css
     └── quotes.json
-
-Data flow, calendar: Google Calendar → private iCal feed → sync_calendar.py → calendar.json → dashboard JavaScript
+```
 
 Data flow, projects: Browser (drag/add/delete) → Flask API (projects-api) → projects.json on disk → back to any browser reading the board
 
-No frontend framework — plain HTML/CSS/JavaScript throughout, intentionally. The goal was to understand every layer of the stack directly rather than lean on abstractions that hide what's actually happening.
+The site files are edited on my laptop and synced to Athena with Syncthing (receive-only on the Pi), so the folder nginx serves always matches my working copy.
 
-Tech stack
-Frontend: HTML, CSS (custom properties / CSS Grid, no framework), vanilla JavaScript
-Backend: Python (Flask) for the projects API, Python for the calendar sync script
-Infrastructure: Docker, Docker Compose, NGINX, NGINX Proxy Manager, systemd
-External APIs: Open-Meteo (weather, no key required), BigDataCloud (reverse geocoding), Google Calendar (private iCal feed)
-Hardware
-Athena — Raspberry Pi 5, running Pi-hole (host), Docker, and all services above
-Hermes — Raspberry Pi Zero 2 W, running a secondary Pi-hole instance on a separate VLAN
-Notes on secrets and configuration
+No frontend framework — plain HTML/CSS/JavaScript throughout, intentionally. The goal is to understand every layer of the stack directly rather than lean on abstractions that hide what's actually happening.
 
-This repo does not include any credentials, API keys, or private calendar URLs. Files containing local configuration (e.g. the calendar sync's private iCal URL) are excluded via .gitignore; a config.example.json is provided as a template for anyone setting this up themselves.
+## Tech stack
 
-Status
+- **Frontend:** HTML, CSS, vanilla JavaScript (no framework)
+- **Backend:** Python (Flask) for the projects API
+- **Infrastructure:** Docker, Docker Compose, NGINX, NGINX Proxy Manager, Syncthing
+- **External APIs:** Open-Meteo (weather, no key required); more to be added
 
-Actively in use as my daily dashboard. Ongoing/future additions include network documentation, a server inventory page, and homelab architecture diagrams.
+## Hardware
+
+- **Athena** — Raspberry Pi 5, running Pi-hole (host), Docker, and all services above
+- **Hermes** — Raspberry Pi Zero 2 W, a headless secondary Pi-hole instance on a separate VLAN
+
+## Secrets and configuration
+
+This repo does not include any credentials, API keys, or private URLs. `.env` files are excluded via `.gitignore`. Any future API that needs a key will be called through the backend, never from browser JavaScript, with the key stored in an environment variable.
+
+## Status
+
+In active use as my daily homelab site, and under ongoing development. The current work is a frontend rebuild: repo cleanup, then a shared page layout, then CSS foundations, then a weather page.

@@ -21,7 +21,7 @@
     <a href="/links.html">Links</a>
     <a href="/commands.html">Commands</a>
     <a href="/projects.html">Projects</a>
-    <a href="/calendar.html">Calendar</a>
+    <a href="/weather.html">Weather</a>
     <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
 </nav>
 
@@ -279,26 +279,6 @@
 </p>
 
 <ul>
-
-    <li>
-        <code>systemctl status calendar-sync.timer</code><br>
-        Confirm the calendar sync timer is active and check when it last ran
-    </li>
-
-    <li>
-        <code>systemctl status calendar-sync.service</code><br>
-        Check the result of the most recent calendar sync run
-    </li>
-
-    <li>
-        <code>journalctl -u calendar-sync.service -n 50</code><br>
-        View the last 50 log lines from the calendar sync script (useful for errors)
-    </li>
-
-    <li>
-        <code>journalctl -u calendar-sync.service -f</code><br>
-        Follow the calendar sync logs live as they happen
-    </li>
 
     <li>
         <code>curl http://localhost:5050/projects</code><br>
