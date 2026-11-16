@@ -1,66 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <script>
-    (function() {
-        const stored = localStorage.getItem("theme");
-        if (stored) {
-            document.documentElement.setAttribute("data-theme", stored);
-        }
-    })();
-    </script>
-    <title>Homelab Landing Page</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+        (function() {
+            const stored = localStorage.getItem("theme");
+            if (stored) {
+                document.documentElement.setAttribute("data-theme", stored);
+            }
+        })();
+        </script>
+        <title>Homelab Landing Page</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
+    <body>
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/links.html">Links</a>
-    <a href="/commands.html">Commands</a>
-    <a href="/projects.html">Projects</a>
-    <a href="/weather.html">Weather</a>
-    <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
-</nav>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/links.html">Links</a>
+            <a href="/commands.html">Commands</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/weather.html">Weather</a>
+            <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+        </nav>
 
-<div class="container">
+    <main class="container">
 
-<h1 style="text-align: center;">
-        Homelab Landing Page
-</h1>
+        <h1 style="text-align: center;">
+                Homelab Landing Page
+        </h1>
 
-<p>
-    Welcome to my homelab dashboard. 
-    This site documents my self-hosted services, projects, and useful resources.
-</p>
+        <p>
+            Welcome to my homelab dashboard. 
+            This site documents my self-hosted services, projects, and useful resources.
+        </p>
 
-<hr>
+        <hr>
 
-<h2>
-        Documentation
-</h2>
+        <h2>
+                Documentation
+        </h2>
 
-<ul>
-    <li><a href="/links.html">Network Links</a></li>
-    <li><a href="/commands.html">Useful Commands</a></li>
-    <li><a href="/projects.html">Projects</a></li>
-    <li><a href="/weather.html">Weather</a></li>
-</ul>
+        <ul>
+            <li><a href="/links.html">Network Links</a></li>
+            <li><a href="/commands.html">Useful Commands</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/weather.html">Weather</a></li>
+        </ul>
 
 
-<h2>
-        Future Pages
-</h2>
+        <h2>
+                Future Pages
+        </h2>
 
-<ul>
-    <li>Network Documentation</li>
-    <li>Server Inventory</li>
-    <li>Homelab Diagrams</li>
-</ul>
+        <ul>
+            <li>Network Documentation</li>
+            <li>Server Inventory</li>
+            <li>Homelab Diagrams</li>
+        </ul>
 
-</div>
-<script src="theme.js" defer></script>
-</body>
+
+</main>
+    <script src="theme.js" defer></script>
+    </body>
 </html>
