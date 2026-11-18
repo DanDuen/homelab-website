@@ -31,7 +31,10 @@ Raspberry Pi 5 ("Athena")
 │
 └── Static site (served via Docker nginx)
     ├── index.html, projects.html, commands.html, links.html
-    ├── script.js, projects.js, theme.js
+    ├── components/
+    │   ├── navbar.html   (shared navbar, loaded by layout.js)
+    │   └── footer.html   (shared footer, loaded by layout.js)
+    ├── layout.js, theme.js, projects.js, script.js
     ├── style.css
     └── quotes.json
 ```
@@ -39,6 +42,10 @@ Raspberry Pi 5 ("Athena")
 Data flow, projects: Browser (drag/add/delete) → Flask API (projects-api) → projects.json on disk → back to any browser reading the board
 
 The site files are edited on my laptop and synced to Athena with Syncthing (receive-only on the Pi), so the folder nginx serves always matches my working copy.
+
+### Shared layout
+
+The navbar and footer each live in one file under `components/`. Every page has an empty placeholder (`navbar-placeholder`, `footer-placeholder`), and `layout.js` fetches the component files and inserts them when the page loads. The files in `components/` are fragments, not full pages, so they aren't meant to be opened on their own. Because the pages use `fetch`, they must be served over HTTP (through nginx); opening an HTML file straight from disk (`file://`) won't load the navbar or footer.
 
 No frontend framework — plain HTML/CSS/JavaScript throughout, intentionally. The goal is to understand every layer of the stack directly rather than lean on abstractions that hide what's actually happening.
 
@@ -60,4 +67,4 @@ This repo does not include any credentials, API keys, or private URLs. `.env` fi
 
 ## Status
 
-In active use as my daily homelab site, and under ongoing development. The current work is a frontend rebuild: repo cleanup, then a shared page layout, then CSS foundations, then a weather page.
+In active use as my daily homelab site, and
